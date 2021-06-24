@@ -1,0 +1,188 @@
+{
+	"info": {
+		"_postman_id": "75b51006-3f99-4545-acb4-548947a37531",
+		"name": "RIESGOS SystemReliability requests",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Register Process",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"processDescription\": {\r\n    \"process\": {\r\n      \"id\": \"org.n52.gfz.riesgos.algorithm.impl.SystemReliabilitySingleProcess\",\r\n      \"title\": \"SystemReliabilitySingleProcess\",\r\n      \"description\": \"Process for performing the reliability of infrastructure networks\",\r\n      \"version\": \"1.0.0\",\r\n      \"keywords\": [\r\n        \"SystemReliability\", \"Shakemap\", \"single\", \"intensity\"\r\n      ],\r\n      \"inputs\": [\r\n        {\r\n          \"id\": \"intensity\",\r\n          \"title\":\"intensity\",\r\n          \"description\": \"File with the intensities\",\r\n          \"minOccurs\": 1,\r\n          \"maxOccurs\": 1,\r\n          \"input\": {\r\n            \"formats\": [\r\n              {\r\n                \"mimeType\": \"text/xml\",\r\n\t\t\t\t\"schema\": \"http://earthquake.usgs.gov/eqcenter/shakemap\",\r\n\t\t\t\t\"encoding\": \"UTF-8\",\r\n                \"default\": true\r\n              }\r\n            ]\r\n          }\r\n        },\r\n\t\t{\r\n          \"id\": \"country\",\r\n          \"title\":\"country\",\r\n          \"description\": \"one of chile, peru or ecuador\",\r\n\t\t  \"minOccurs\": 1,\r\n          \"maxOccurs\": 1,\r\n\t\t  \"input\": {\r\n            \"literalDataDomains\": [\r\n              {\r\n                \"default\": true,\r\n                \"dataType\": { \"name\": \"string\" },\r\n\t\t\t\t\"valueDefinition\": [\"peru\", \"chile\", \"ecuador\"]\r\n\t\t\t }\r\n            ]\r\n          }\r\n        },\r\n\t\t{\r\n          \"id\": \"hazard\",\r\n          \"title\":\"hazard\",\r\n          \"description\": \"one of lahar or earthquake\",\r\n          \"minOccurs\": 1,\r\n          \"maxOccurs\": 1,\r\n\t\t  \"input\": {\r\n            \"literalDataDomains\": [\r\n              {\r\n                \"default\": true,\r\n                \"dataType\": { \"name\": \"string\" },\r\n\t\t\t\t\"valueDefinition\": [\"lahar\", \"earthquake\"]\r\n\t\t\t }\r\n            ]\r\n          }\r\n        }],\r\n      \"outputs\": [\r\n        {\r\n          \"id\": \"damage_consumer_areas\",\r\n          \"title\":  \"damage_consumer_areas\",\r\n\t\t  \"description\": \"Damage in the consumer area\",\r\n          \"output\": {\r\n            \"formats\": [\r\n              {\r\n                \"mimeType\": \"application/vnd.google-earth.kml+xml\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/kml/2.2.0/ogckml22.xsd\",\r\n                \"default\": true\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"application/x-zipped-shp\",\r\n\t\t\t\t\"encoding\": \"base64\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml\",\r\n\t\t\t\t\"encoding\": \"base64\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/2.0.0/feature.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/2.1.1/feature.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/2.1.2.1/feature.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/2.1.2/feature.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml; subtype=gml/2.0.0\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/2.0.0/feature.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml; subtype=gml/2.1.1\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/2.1.1/feature.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml; subtype=gml/2.1.2\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/2.1.2/feature.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml; subtype=gml/2.1.2.1\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/2.1.2.1/feature.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/3.0.0/base/feature.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/3.0.1/base/feature.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/3.1.0/base/feature.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/3.1.1/base/feature.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/3.2.1/base/feature.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml; subtype=gml/3.0.0\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/3.0.0/base/feature.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml; subtype=gml/3.0.1\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/3.0.1/base/feature.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml; subtype=gml/3.1.0\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/3.1.0/base/feature.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml; subtype=gml/3.1.1\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/3.1.1/base/feature.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml; subtype=gml/3.2.1\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/3.2.1/base/feature.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml\",\r\n\t\t\t\t\"schema\": \"http://geoserver.itc.nl:8080/wps/schemas/gml/2.1.2/gmlpacket.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"text/xml\",\r\n\t\t\t\t\"schema\": \"http://schemas.opengis.net/gml/2.1.2/gmlpacket.xsd\",\r\n                \"default\": false\r\n              },\r\n\t\t\t  {\r\n                \"mimeType\": \"application/vnd.geo+json\",\r\n                \"default\": false\r\n              }\r\n            ]\r\n          }\r\n        }\r\n      ]\r\n    },\r\n    \"jobControlOptions\": [\r\n      \"sync-execute\"\r\n    ],\r\n    \"outputTransmission\": [\r\n      \"value\"\r\n    ]\r\n  },\r\n  \"immediateDeployment\": true,\r\n  \"executionUnit\": [\r\n    {\r\n      \"unit\": {\r\n        \"type\": \"docker\",\r\n        \"image\": \"52north/tum-era-critical-infrastructure-analysis-single:latest\"\r\n      }\r\n    }\r\n  ],\r\n  \"deploymentProfileName\": \"http://www.opengis.net/profiles/eoc/dockerizedApplication\"\r\n}\r\n"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/processes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"processes"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Execute SystemReliabilty Process",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept-encoding": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/xml",
+						"type": "text"
+					},
+					{
+						"key": "Accept-Encoding",
+						"value": "UTF-8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"UTF-8\"?>\r\n<wps:Execute xmlns:wps=\"http://www.opengis.net/wps/1.0.0\" service=\"WPS\" version=\"2.0.0\">\r\n    <p0:Identifier xmlns:p0=\"http://www.opengis.net/ows/1.1\">org.n52.gfz.riesgos.algorithm.impl.SystemReliabilitySingleProcess</p0:Identifier>\r\n    <wps:DataInputs>\r\n        <wps:Input>\r\n            <p0:Identifier xmlns:p0=\"http://www.opengis.net/ows/1.1\">intensity</p0:Identifier>\r\n            <p0:Title xmlns:p0=\"http://www.opengis.net/ows/1.1\">intensity</p0:Title>\r\n            <p0:Abstract xmlns:p0=\"http://www.opengis.net/ows/1.1\"></p0:Abstract>\r\n            <wps:Reference p1:href=\"https://riesgos.52north.org/shakemap_example.xml\" \r\n                xmlns:p1=\"http://www.w3.org/1999/xlink\" method=\"GET\" mimeType=\"text/xml\">\r\n            </wps:Reference>\r\n        </wps:Input>\r\n        <wps:Input>\r\n            <p0:Identifier xmlns:p0=\"http://www.opengis.net/ows/1.1\">country</p0:Identifier>\r\n            <p0:Title xmlns:p0=\"http://www.opengis.net/ows/1.1\">country</p0:Title>\r\n            <p0:Abstract xmlns:p0=\"http://www.opengis.net/ows/1.1\"></p0:Abstract>\r\n            <wps:Data>\r\n                <wps:LiteralData>chile</wps:LiteralData>\r\n            </wps:Data>\r\n        </wps:Input>\r\n        <wps:Input>\r\n            <p0:Identifier xmlns:p0=\"http://www.opengis.net/ows/1.1\">hazard</p0:Identifier>\r\n            <p0:Title xmlns:p0=\"http://www.opengis.net/ows/1.1\">hazard</p0:Title>\r\n            <p0:Abstract xmlns:p0=\"http://www.opengis.net/ows/1.1\"></p0:Abstract>\r\n            <wps:Data>\r\n                <wps:LiteralData>earthquake</wps:LiteralData>\r\n            </wps:Data>\r\n        </wps:Input>\r\n    </wps:DataInputs>\r\n    <wps:ResponseForm>\r\n        <wps:ResponseDocument storeExecuteResponse=\"false\" status=\"false\">\r\n            <wps:Output mimeType=\"application/vnd.geo+json\" asReference=\"false\">\r\n                <p0:Identifier xmlns:p0=\"http://www.opengis.net/ows/1.1\">damage_consumer_areas</p0:Identifier>\r\n            </wps:Output>\r\n        </wps:ResponseDocument>\r\n    </wps:ResponseForm>\r\n</wps:Execute>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/service?service=WPS&version=2.0.0&request=Execute&identifier=org.n52.gfz.riesgos.algorithm.impl.SystemReliabilitySingleProcess",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"service"
+					],
+					"query": [
+						{
+							"key": "service",
+							"value": "WPS"
+						},
+						{
+							"key": "version",
+							"value": "2.0.0"
+						},
+						{
+							"key": "request",
+							"value": "Execute"
+						},
+						{
+							"key": "identifier",
+							"value": "org.n52.gfz.riesgos.algorithm.impl.SystemReliabilitySingleProcess"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API Processes Execute - Single",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"inputs\":[\r\n    {\r\n      \"id\": \"intensity\",\r\n      \"input\": { \r\n        \"format\": { \"mimeType\": \"text/xml\" },\r\n        \"value\": {\r\n            \"href\": \"https://riesgos.52north.org/shakemap_example.xml\"\r\n        }\r\n      }\r\n    },\r\n    {\r\n      \"id\": \"country\",\r\n      \"input\": { \"value\": \"ecuador\" }\r\n    },\r\n    {\r\n      \"id\": \"hazard\",\r\n      \"input\": { \"value\": \"earthquake\" }\r\n    }\r\n  ],\r\n  \"outputs\": [\r\n    {\r\n      \"id\": \"damage_consumer_areas\",\r\n      \"format\": {\r\n        \"mimeType\": \"application/vnd.geo+json\",\r\n        \"default\": true\r\n      },\r\n      \"transmissionMode\": \"reference\"\r\n    }\r\n  ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/processes/org.n52.gfz.riesgos.algorithm.impl.SystemReliabilitySingleProcess/jobs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"processes",
+						"org.n52.gfz.riesgos.algorithm.impl.SystemReliabilitySingleProcess",
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "API Processes Execute - Multi",
+			"protocolProfileBehavior": {
+				"disabledSystemHeaders": {
+					"content-type": true,
+					"accept": true
+				}
+			},
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					},
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"inputs\": [\r\n        {\r\n            \"id\": \"height\",\r\n            \"input\": {\r\n                \"format\": {\r\n                    \"mimeType\": \"text/xml\"\r\n                },\r\n                \"value\": {\r\n                    \"href\": \"https://riesgos.52north.org/shakemap_example.xml\"\r\n                }\r\n            }\r\n        },\r\n        {\r\n            \"id\": \"velocity\",\r\n            \"input\": {\r\n                \"format\": {\r\n                    \"mimeType\": \"text/xml\"\r\n                },\r\n                \"value\": {\r\n                    \"href\": \"https://riesgos.52north.org/shakemap_example.xml\"\r\n                }\r\n            }\r\n        },\r\n        {\r\n            \"id\": \"country\",\r\n            \"input\": {\r\n                \"value\": \"ecaudor\"\r\n            }\r\n        },\r\n        {\r\n            \"id\": \"hazard\",\r\n            \"input\": {\r\n                \"value\": \"earthquake\"\r\n            }\r\n        }\r\n    ],\r\n    \"outputs\": [\r\n        {\r\n            \"id\": \"damage_consumer_areas\",\r\n            \"format\": {\r\n                \"mimeType\": \"application/vnd.geo+json\",\r\n                \"default\": true\r\n            },\r\n            \"transmissionMode\": \"reference\"\r\n        }\r\n    ]\r\n}"
+				},
+				"url": {
+					"raw": "http://localhost:8080/rest/processes/org.n52.gfz.riesgos.algorithm.impl.SystemReliabilityMultiProcess/jobs",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"rest",
+						"processes",
+						"org.n52.gfz.riesgos.algorithm.impl.SystemReliabilityMultiProcess",
+						"jobs"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
